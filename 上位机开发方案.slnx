@@ -1,3 +1,14 @@
 <Solution>
-  <Project Path="WpfApp2/WpfApp2.csproj" />
+  <Folder Name="/Application/">
+    <Project Path="Company.Application.Main/Company.Application.Main.csproj" Id="c95ba3a5-85c3-414c-9a2c-a03f0e67e316" />
+    <Project Path="Company.Application.Share/Company.Application.Share.csproj" Id="50ecb3db-72a2-4004-ab68-a64570263bdf" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="Company.Core/Company.Core.csproj" Id="41f9b232-c265-44d6-8aa4-acdb9a58c892" />
+    <Project Path="Company.Logger/Company.Logger.csproj" Id="1c6f741a-9368-4581-8f66-c8c3d8964163" />
+    <Project Path="Company.UI/Company.UI.csproj" Id="43a8267d-4d45-4ab5-9a12-2cef7bcbb8f2" />
+  </Folder>
+  <Folder Name="/Database/" />
+  <Folder Name="/Hardware/" />
+  <Project Path="Shell/Shell.csproj" />
 </Solution>
