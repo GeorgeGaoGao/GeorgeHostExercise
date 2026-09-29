@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using Company.Application.Share.Prism;
+using MahApps.Metro.Controls;
 using Shell.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -29,5 +30,14 @@ namespace Shell.Views
             var vm = this.DataContext as MainWindowViewModel;
             vm.Title = 8888;
         }
-    }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var vm=this.DataContext as MainWindowViewModel;
+            //加载模块
+            vm.ModuleManager.LoadModule(ModuleNames.ApplicationLoginModule);
+            //导航区域
+            vm.RegionManager.RequestNavigate(RegionNames.MainRegion,"LoginView");
+        }
+    } 
 }

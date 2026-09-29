@@ -13,6 +13,13 @@ namespace Shell.ViewModels
 			get { return _title; }
 			set { _title = value;RaisePropertyChanged(); }
 		}
+        public IModuleManager ModuleManager { get; }
+        public IRegionManager RegionManager { get;  }
+        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager)
+        {
+            ModuleManager = moduleManager;
+            RegionManager = regionManager;
+        }
 
-	}
+    }
 }

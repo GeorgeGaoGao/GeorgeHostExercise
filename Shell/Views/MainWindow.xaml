@@ -9,6 +9,7 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
+                 Loaded="MetroWindow_Loaded"
         Title="{Binding Title}" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>

@@ -7,5 +7,6 @@ namespace Company.Application.Share.Prism
     public class ModuleNames
     {
         public const string ModulePath = @".\Modules";
+        public const string ApplicationLoginModule = "ApplicationLoginModule";
     }
 }
