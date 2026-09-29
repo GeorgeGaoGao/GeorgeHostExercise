@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using Shell.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,24 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Shell.Views
+namespace Company.Application.Login.Views
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// LoginView.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class LoginView : UserControl
     {
-        public MainWindow()
+        public LoginView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var vm = this.DataContext as MainWindowViewModel;
-            vm.Title = 8888;
         }
     }
 }

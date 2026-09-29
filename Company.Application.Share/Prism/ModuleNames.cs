@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Company.Application.Share.Prism
 {
-    public class RegionNames
+    public class ModuleNames
     {
-        public const string MainRegion = "MainRegion";
-        
+        public const string ModulePath = @".\Modules";
     }
 }

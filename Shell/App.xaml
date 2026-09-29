@@ -5,7 +5,12 @@
              xmlns:prism="http://prismlibrary.com/"
             >
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Company.UI;component/Style/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
    
 </prism:PrismApplication>

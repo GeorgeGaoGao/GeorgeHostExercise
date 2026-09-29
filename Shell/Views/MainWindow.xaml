@@ -1,13 +1,26 @@
-﻿<Window x:Class="Shell.Views.MainWindow"
+﻿<mah:MetroWindow x:Class="Shell.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shell.Views"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
         Title="{Binding Title}" Height="450" Width="800">
-    <ContentControl prism:RegionManager.RegionName="{x:Static share:RegionNames.MainRegion }"/>
-</Window>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions> 
+        <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="{x:Static share:RegionNames.MainRegion }"/>
+    </Grid>
+       
+   
+</mah:MetroWindow>

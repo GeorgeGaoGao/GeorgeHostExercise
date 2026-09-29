@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Application/">
+    <Project Path="Company.Application.Login/Company.Application.Login.csproj" Id="5a2cd191-df10-4f66-b060-58f570320fe5" />
     <Project Path="Company.Application.Main/Company.Application.Main.csproj" Id="c95ba3a5-85c3-414c-9a2c-a03f0e67e316" />
     <Project Path="Company.Application.Share/Company.Application.Share.csproj" Id="50ecb3db-72a2-4004-ab68-a64570263bdf" />
   </Folder>
