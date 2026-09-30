@@ -12,10 +12,9 @@ namespace Company.Core.IOC
     [AttributeUsage(AttributeTargets.Class,AllowMultiple =false)]
     public class ExposedServiceAttribute:Attribute
     {
-        public ExposedServiceAttribute(Lifetime lifetime, bool autoInitialize, Type[] types)
+        public ExposedServiceAttribute(Lifetime lifetime=Lifetime.Transient, params Type[] types)
         {
             Lifetime = lifetime;
-            AutoInitialize = autoInitialize;
             Types = types;
         }
 
