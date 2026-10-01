@@ -85,7 +85,7 @@ namespace Company.Core.Extensions
 
         //初始化程序集中所有标注为ExposedServiceAttribute特性的类，要求单例且自动加载AutoInitialize=true
 
-        public static void InitializeTypesOfAssembly(IContainerProvider containerProvider, Assembly assembly)
+        public static void InitializeTypesOfAssembly(this IContainerProvider containerProvider, Assembly assembly)
         {
             var list=GetTypesWithExposedServiceAttributeFromAssembly(assembly);
             foreach (var type in list)
@@ -99,7 +99,7 @@ namespace Company.Core.Extensions
             var list = GetExposedServiceAttributesFromType(type);
             foreach (var attribute in list) 
             {
-                if (attribute.Lifetime==Lifetime.Singleton&&attribute.AutoInitialize)
+                if (attribute.Lifetime==Lifetime.Singleton&&attribute.IsAutoInitialize)
                 {
                     containerProvider.Resolve(type);
                 }

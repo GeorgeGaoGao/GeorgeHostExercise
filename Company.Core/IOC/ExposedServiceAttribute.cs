@@ -19,7 +19,7 @@ namespace Company.Core.IOC
         }
 
         public Lifetime Lifetime { get; set; }
-        public bool AutoInitialize { get; set; }
+        public bool IsAutoInitialize { get; set; }
         public Type[] Types { get; set; }
        
     }

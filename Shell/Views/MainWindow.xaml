@@ -9,8 +9,14 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
-                 Loaded="MetroWindow_Loaded"
+                 xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+               
         Title="{Binding Title}" Height="450" Width="800">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition/>

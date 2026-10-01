@@ -46,14 +46,14 @@
             <StackPanel Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <TextBlock Text="姓名：" Width="100"/>
-                    <TextBox Width="120"/>
+                    <TextBox Width="120" Text="{Binding CurrentUser.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="姓名：" Width="100"/>
-                    <TextBox Width="120"/>
+                    <TextBlock Text="密码：" Width="100"/>
+                    <TextBox Width="120" Text="{Binding CurrentUser.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <Button Content="登录" Width="220"/>
+                    <Button Content="登录" Width="220" Command="{Binding LoginCommand}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

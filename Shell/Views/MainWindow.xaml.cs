@@ -25,19 +25,7 @@ namespace Shell.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var vm = this.DataContext as MainWindowViewModel;
-            vm.Title = 8888;
-        }
-
-        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            var vm=this.DataContext as MainWindowViewModel;
-            //加载模块
-            vm.ModuleManager.LoadModule(ModuleNames.ApplicationLoginModule);
-            //导航区域
-            vm.RegionManager.RequestNavigate(RegionNames.MainRegion,"LoginView");
-        }
+       
+      
     } 
 }

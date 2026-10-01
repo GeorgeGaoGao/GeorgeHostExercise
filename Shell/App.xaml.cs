@@ -1,4 +1,5 @@
 ﻿using Company.Application.Share.Prism;
+using Company.Core;
 using Shell.Views;
 using System.Configuration;
 using System.Data;
@@ -23,7 +24,7 @@ namespace Shell
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             base.ConfigureModuleCatalog(moduleCatalog);
-            //moduleCatalog.AddModule<ApplicationMainModule>();
+            moduleCatalog.AddModule<CoreModule>();
         }
         protected override IModuleCatalog CreateModuleCatalog()
         {
