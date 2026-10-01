@@ -44,7 +44,9 @@
         </Grid>
         <Grid Grid.Column="1" Background="White">
             <StackPanel Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">
+            
                 <StackPanel Orientation="Horizontal" Margin="10">
+                   
                     <TextBlock Text="姓名：" Width="100"/>
                     <TextBox Width="120" Text="{Binding CurrentUser.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
