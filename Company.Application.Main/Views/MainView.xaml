@@ -8,8 +8,9 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <StackPanel>
         <TextBlock Text="MainView" FontSize="50"/>
+        <TextBlock Text="{Binding UserLogin.UserName}" FontSize="20" Width="200" Height="50"/>
         <Button Content="myButton" Width="200" Height="50"/>
-    </Grid>
+    </StackPanel>
 </UserControl>

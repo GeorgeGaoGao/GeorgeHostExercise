@@ -13,4 +13,8 @@
     <PackageReference Include="ReactiveUI.WPF" Version="25.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dialog\ViewModels\" />
+  </ItemGroup>
+
 </Project>

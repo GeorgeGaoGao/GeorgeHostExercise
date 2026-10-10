@@ -57,6 +57,11 @@
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <Button Content="登录" Width="220" Command="{Binding LoginCommand}"/>
                 </StackPanel>
+                <!--登录失败提示
+                    <StackPanel Visibility="Hidden">
+                    <TextBlock Text="登录失败，请检查用户名和密码！" Foreground="Red"/>
+                </StackPanel>
+                -->
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,4 +1,7 @@
-﻿using Company.Application.Share.Prism;
+﻿using Company.Application.Share.Events;
+using Company.Application.Share.Model;
+using Company.Application.Share.Prism;
+using Company.Core.IOC;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,6 +32,14 @@ namespace Shell.ViewModels
             ModuleManager.LoadModule(ModuleNames.ApplicationLoginModule);
             //导航区域
             RegionManager.RequestNavigate(RegionNames.MainRegion,ViewNames.LoginView);
+
+            MyPrismProvider.EventAggregator.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginResultReceived,ThreadOption.UIThread);
+        }
+
+        private void OnLoginResultReceived(CurrentUser user)
+        {
+            MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
+            MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Shell
     {
         protected override Window CreateShell()
         {
-            return new MainWindow();
+            return Container.Resolve<MainWindow>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

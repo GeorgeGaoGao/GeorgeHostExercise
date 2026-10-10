@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Company.Core.IOC
 {
-    [ExposedService(Lifetime.Singleton,IsAutoInitialize =true)]
+    //它只接收一个 Lifetime 和一个 Type[]。而 [ExposedService(Lifetime.Singleton, IsAutoInitialize = true)] 中：
+    //Lifetime.Singleton → 传给构造函数的 lifetime 参数。
+    //IsAutoInitialize = true → 不是构造函数参数，而是给特性实例的 IsAutoInitialize 属性赋值。
+    //types 没有传 → 默认为空数组。
+    [ExposedService(Lifetime.Singleton, IsAutoInitialize = true)]
     public sealed class MyPrismProvider
     {
         public static IContainerExtension Container { get; private set; }//容器。相当于是IContainerRegistry IContainerProvider的合集。
@@ -21,11 +25,11 @@ namespace Company.Core.IOC
             IModuleManager moduleManager
             )
         {
-            Container= container;
-            RegionManager= regionManager;
-            DialogService= dialogService;
-            EventAggregator= eventAggregator;
-            ModuleManager= moduleManager;
+            Container = container;
+            RegionManager = regionManager;
+            DialogService = dialogService;
+            EventAggregator = eventAggregator;
+            ModuleManager = moduleManager;
         }
     }
 }

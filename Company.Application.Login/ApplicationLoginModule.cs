@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Company.Application.Login
 {
-    [Module(ModuleName =ModuleNames.ApplicationLoginModule,OnDemand =true)]
+    [Module(ModuleName = ModuleNames.ApplicationLoginModule, OnDemand = true)]
     public class ApplicationLoginModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

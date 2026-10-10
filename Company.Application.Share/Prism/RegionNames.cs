@@ -6,7 +6,7 @@ namespace Company.Application.Share.Prism
 {
     public class RegionNames
     {
-        public const string MainRegion = "MainRegion";
+        public static readonly string MainRegion = "MainRegion";
         
     }
 }
