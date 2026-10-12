@@ -15,6 +15,6 @@ namespace Company.Core.Enums
         [Description("繁体中文")]
         TW,
         [Description("English")]
-        EN
+        US
     }
 }
