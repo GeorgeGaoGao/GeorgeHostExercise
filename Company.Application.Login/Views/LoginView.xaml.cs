@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Core.IOC;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,19 +22,27 @@ namespace Company.Application.Login.Views
         public LoginView()
         {
             InitializeComponent();
-            // 方法1：Loaded 时打印（能捕捉到 AutoWire 之后的结果）
             this.Loaded += (s, e) =>
             {
-                System.Diagnostics.Debug.WriteLine(
-                    $"[LoginView] DataContext Type = {this.DataContext?.GetType().FullName ?? "NULL"}");
-            };
-
-            // 方法2：DataContext 变化时打印（能捕捉到任何赋值）
-            this.DataContextChanged += (s, e) =>
-            {
-                System.Diagnostics.Debug.WriteLine(
-                    $"[LoginView] DataContextChanged → {e.NewValue?.GetType().FullName ?? "NULL"}");
+                CN.Checked += LanguageChecked;
+                US.Checked += LanguageChecked;
+                TW.Checked += LanguageChecked;
             };
         }
+
+        private void LanguageChecked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton)
+            {
+                switch (radioButton.Name)
+                {
+                    case "CN": MyPrismProvider.LanguageManager.SetLanguage(Core.Enums.LanguageType.CN); break;
+                    case "US": MyPrismProvider.LanguageManager.SetLanguage(Core.Enums.LanguageType.US); break;
+                    case "TW": MyPrismProvider.LanguageManager.SetLanguage(Core.Enums.LanguageType.TW); break;
+                    default: MyPrismProvider.LanguageManager.SetLanguage(Core.Enums.LanguageType.CN); break;
+                }
+            }
+        }
+
     }
 }

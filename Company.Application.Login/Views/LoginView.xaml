@@ -47,11 +47,11 @@
             
                 <StackPanel Orientation="Horizontal" Margin="10">
                    
-                    <TextBlock Text="姓名：" Width="100"/>
+                    <TextBlock Text="{DynamicResource 用户名}"  Width="100"/>
                     <TextBox Width="120" Text="{Binding CurrentUser.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="密码：" Width="100"/>
+                    <TextBlock Text="{DynamicResource 密码}" Width="100"/>
                     <TextBox Width="120" Text="{Binding CurrentUser.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
@@ -62,6 +62,11 @@
                     <TextBlock Text="登录失败，请检查用户名和密码！" Foreground="Red"/>
                 </StackPanel>
                 -->
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="15" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <RadioButton Name="CN" Content="简体中文" IsChecked="True" Margin="5"/>
+                <RadioButton Name="TW" Content="繁體中文" IsChecked="False" Margin="5"/>
+                <RadioButton Name="US" Content="English" IsChecked="False" Margin="5"/> 
             </StackPanel>
         </Grid>
     </Grid>

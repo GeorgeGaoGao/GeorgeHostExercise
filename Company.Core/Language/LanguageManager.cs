@@ -13,8 +13,9 @@ namespace Company.Core.Language
     [ExposedService(Lifetime.Singleton, typeof(ILanguageManager))]
     public class LanguageManager : ILanguageManager
     {
-        private ResourceDictionary LanguageResourceDictionary { get; set; }
-        private string Uri { get; set;  }//语言字典的通用资源地址
+        private ResourceDictionary Resources { get; set; }
+        
+        private string LanguageResourceBasePath ;//语言字典的通用资源基准地址
         public LanguageManager()
         {
             SetLanguage(LanguageType.CN);
@@ -23,14 +24,11 @@ namespace Company.Core.Language
         {
             get
             {
-                if (this.LanguageResourceDictionary != null && this.LanguageResourceDictionary.Contains(key))
+                if (this.Resources != null&&this.Resources.Contains(key))
                 {
-                    return LanguageResourceDictionary[key].ToString();
+                    return this.Resources[key].ToString();
                 }
-                else
-                {
-                    return key;
-                }
+                return key;
             }
         }
 
@@ -38,25 +36,33 @@ namespace Company.Core.Language
 
         public void SetLanguage(LanguageType languageType)
         {
-            Assert.NotNull(languageType);
-            if (this.Uri==null)
+            Assert.NotNull(languageType);// //如果 LanguageType 是枚举 enum 或普通值类型，
+                                         // 那么它本身不可能为 null，这句断言实际上没有效果。
+
+            if (LanguageResourceBasePath==null)
             {
-                ResourceDictionary resourceDictionary = Application.Current.Resources.
-                    MergedDictionaries[0];//默认APP的资源字典第一个放置语言字典。
-                string path = resourceDictionary.Source.AbsolutePath;
-                this.Uri= path.Remove(path.LastIndexOf("/"));
+                var mergedDictionaries = Application.Current.Resources.MergedDictionaries;
+                var path = mergedDictionaries[0].Source.AbsolutePath;
+                this.LanguageResourceBasePath = path.Remove(path.LastIndexOf("/"));
             }
-            string target = $"{Uri}/{languageType}.xaml";
-            this.LanguageResourceDictionary=(ResourceDictionary)Application.LoadComponent(
-                new Uri(this.Uri,UriKind.RelativeOrAbsolute));
+
+            string languageUri = $"{LanguageResourceBasePath}/{languageType}.xaml";
+            this.Resources=(ResourceDictionary)Application.LoadComponent(
+                new Uri(languageUri,UriKind.Relative));
+
             Application.Current.Resources.MergedDictionaries.RemoveAt(0);
-            Application.Current.Resources.MergedDictionaries.Insert(0, LanguageResourceDictionary);
+            Application.Current.Resources.MergedDictionaries.Insert(0, this.Resources);
+
+
+
 
             if (CurrentLanguageType!= languageType)
             {
                 CurrentLanguageType = languageType;
                 //todo 保存到系统设置里
             }
+
+         
         }
     }
 }

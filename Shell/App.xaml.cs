@@ -1,4 +1,5 @@
-﻿using Company.Application.Share.Prism;
+﻿using Company.Application.Menu;
+using Company.Application.Share.Prism;
 using Company.Core;
 using Shell.Views;
 using System.Configuration;

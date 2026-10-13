@@ -23,7 +23,7 @@ namespace Company.Application.Login.ViewModels
             LoginCommand = new DelegateCommand(OnLoginCommand);
             CurrentUser = new CurrentUser()
             {
-                UserName = "george",
+                UserName = "Admin",
                 Password = "123456"
             };
         }
@@ -34,7 +34,7 @@ namespace Company.Application.Login.ViewModels
             {
                 return;
             }
-            if (CurrentUser.UserName == "admin" && CurrentUser.Password == "123456")
+            if (CurrentUser.UserName == "Admin" && CurrentUser.Password == "123456")
             {
                 MyPrismProvider.EventAggregator.GetEvent<LoginSuccessEvent>().Publish(CurrentUser);
             }

@@ -10,7 +10,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
                  xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
-               
+        WindowStartupLocation="CenterScreen"      
         Title="{Binding Title}" Height="450" Width="800">
     <b:Interaction.Triggers>
         <b:EventTrigger EventName="Loaded">
@@ -18,16 +18,9 @@
         </b:EventTrigger>
     </b:Interaction.Triggers>
     <Grid ShowGridLines="True">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions> 
-        <ContentControl Grid.Row="1" Grid.Column="1" prism:RegionManager.RegionName="{x:Static share:RegionNames.MainRegion }"/>
-    </Grid>
        
-   
+        <ContentControl prism:RegionManager.RegionName="{x:Static share:RegionNames.MainRegion }"/>
+    </Grid>
+
+
 </mah:MetroWindow>

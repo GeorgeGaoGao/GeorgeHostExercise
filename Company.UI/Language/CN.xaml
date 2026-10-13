@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <System:String x:Key="用户名">用户名：</System:String>
+    <System:String x:Key="密码">密   码：</System:String>
+</ResourceDictionary>

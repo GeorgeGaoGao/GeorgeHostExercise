@@ -1,7 +1,9 @@
 <Solution>
   <Folder Name="/Application/">
+    <Project Path="Company.Application.Image/Company.Application.Image.csproj" Id="b3a02eef-d265-4935-9442-9f884b3cdc3d" />
     <Project Path="Company.Application.Login/Company.Application.Login.csproj" Id="5a2cd191-df10-4f66-b060-58f570320fe5" />
     <Project Path="Company.Application.Main/Company.Application.Main.csproj" Id="c95ba3a5-85c3-414c-9a2c-a03f0e67e316" />
+    <Project Path="Company.Application.Menu/Company.Application.Menu.csproj" Id="610862be-9f74-40ff-9c8f-d86ec647856a" />
     <Project Path="Company.Application.Share/Company.Application.Share.csproj" Id="50ecb3db-72a2-4004-ab68-a64570263bdf" />
   </Folder>
   <Folder Name="/Core/">

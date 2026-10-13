@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Company.Application.Main
 {
+    [Module(ModuleName = ModuleNames.ApplicationMainModule,OnDemand =true)]
+    [ModuleDependency(ModuleNames.ApplicationMenuModule)]
+    [ModuleDependency(ModuleNames.ApplicationImageModule)]
     public class ApplicationMainModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

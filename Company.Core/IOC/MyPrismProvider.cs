@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Core.Language;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace Company.Core.IOC
     [ExposedService(Lifetime.Singleton, IsAutoInitialize = true)]
     public sealed class MyPrismProvider
     {
+        public static ILanguageManager LanguageManager { get; private set; } //语言管理器
         public static IContainerExtension Container { get; private set; }//容器。相当于是IContainerRegistry IContainerProvider的合集。
 
         public static IRegionManager RegionManager { get; private set; }//区域管理器
@@ -18,6 +20,7 @@ namespace Company.Core.IOC
         public static IEventAggregator EventAggregator { get; private set; }//事件聚合器，也就是消息总线
         public static IModuleManager ModuleManager { get; private set; }//模块管理器
         public MyPrismProvider(
+            ILanguageManager languageManager,
             IContainerExtension container,
             IRegionManager regionManager,
             IDialogService dialogService,
@@ -25,6 +28,7 @@ namespace Company.Core.IOC
             IModuleManager moduleManager
             )
         {
+            LanguageManager = languageManager;
             Container = container;
             RegionManager = regionManager;
             DialogService = dialogService;

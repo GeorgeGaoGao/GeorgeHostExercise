@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Company.Application.Menu.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Company.Application.Menu.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
+             mc:Ignorable="d" 
+            >
+    <Menu FontSize="16" Padding="5">
+        <MenuItem Header="设置">
+            <MenuItem Header="系统设置"/>
+        </MenuItem>
+        <MenuItem Header="硬件">
+            <MenuItem Header="运动轴"/>
+            <MenuItem Header="相机"/>
+            <MenuItem Header="光机"/>
+            <MenuItem Header="PLC"/>
+            <MenuItem Header="控制卡"/>
+        </MenuItem>
+        <MenuItem Header="标定">
+            <MenuItem Header="坐标"/>
+        </MenuItem>
+        <MenuItem Header="数据">
+            <MenuItem Header="运动轴"/>
+        </MenuItem>
+        <MenuItem Header="关于">
+            <MenuItem Header="帮助"/>
+        </MenuItem>
+    </Menu>
+</UserControl>
