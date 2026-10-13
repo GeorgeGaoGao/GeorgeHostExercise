@@ -10,7 +10,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Name="pictureGrid" Background="Gray">
-        <Image/>
+        <Canvas ClipToBounds="True">
+             <Image/>
+        </Canvas>
+       
         <TextBlock Text="pictureGrid"/>
     </Grid>
 </UserControl>

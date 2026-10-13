@@ -12,6 +12,9 @@
     <Project Path="Company.UI/Company.UI.csproj" Id="43a8267d-4d45-4ab5-9a12-2cef7bcbb8f2" />
   </Folder>
   <Folder Name="/Database/" />
-  <Folder Name="/Hardware/" />
+  <Folder Name="/Hardware/">
+    <Project Path="Company.Hardware.Camera/Company.Hardware.Camera.csproj" Id="aaf417b1-22af-4d04-8d89-ef3b2d4f01f6" />
+    <Project Path="Company.Hardware.Detector/Company.Hardware.Detector.csproj" Id="47cf6d3d-8d4b-45e4-a57c-6bcbe7519999" />
+  </Folder>
   <Project Path="Shell/Shell.csproj" />
 </Solution>
