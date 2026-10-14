@@ -42,6 +42,7 @@ namespace Company.Hardware.Detector.None
                 {
                     OnImageCaptured(new DetectorImage(temp));
                 }
+                Thread.Sleep(50);
             }
         }
 
