@@ -8,6 +8,13 @@ namespace Company.Hardware.Camera
     {
         public CameraConfig CameraConfig { get; private set; }
         public bool IsInitialized { get; private set; }
+
+        public event Action<Photo> ImageCaptured;
+        protected void OnImageCaptured(Photo photo)
+        {
+            ImageCaptured?.Invoke(photo);
+        }
+
         public void Close()
         {
             if (IsInitialized)
@@ -19,11 +26,12 @@ namespace Company.Hardware.Camera
 
         public bool Initialize(CameraConfig cameraConfig)
         {
-            CameraConfig = cameraConfig;
+           
             if (IsInitialized)
             {
                 throw new Exception("相机重复初始化");
-            }
+            } 
+            CameraConfig = cameraConfig;
             if (DoInitial())
             {
                 IsInitialized = true;
@@ -34,12 +42,8 @@ namespace Company.Hardware.Camera
 
         
        
-        public bool Trigger()
-        {
-            throw new NotImplementedException();
-        }
-
-        public abstract void DoClose();
+        public abstract bool Trigger();
+        public abstract bool DoClose();
         public abstract bool DoInitial();
     }
 }

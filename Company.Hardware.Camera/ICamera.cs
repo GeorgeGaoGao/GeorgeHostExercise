@@ -6,6 +6,7 @@ namespace Company.Hardware.Camera
 {
     public interface ICamera
     {
+        event Action<Photo> ImageCaptured;
         bool IsInitialized { get; }
         bool Initialize(CameraConfig cameraConfig);
         bool Trigger();
