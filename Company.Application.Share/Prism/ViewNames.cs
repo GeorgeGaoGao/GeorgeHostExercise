@@ -8,5 +8,6 @@ namespace Company.Application.Share.Prism
     {
         public  const string LoginView = "LoginView";//登录视图
         public  const string MainView = "MainView";//主视图
+        public  const string InitializeView = "InitializeView";//初始化视图
     }
 }

@@ -13,7 +13,7 @@ namespace Company.Application.Image
         public void OnInitialized(IContainerProvider containerProvider)
         {
            containerProvider.InitializeTypesOfAssembly(System.Reflection.Assembly.GetExecutingAssembly());
-            containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<ImageView>(RegionNames.ImageRegion);
+            //containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<ImageView>(RegionNames.ImageRegion);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

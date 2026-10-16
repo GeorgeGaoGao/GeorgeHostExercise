@@ -7,7 +7,7 @@ namespace Company.Hardware.Detector
     public class DetectorConfig
     {
         public string Photo { get; set; } = "1.tiff";
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public int Width { get; set; } = 1500;
+        public int Height { get; set; } = 1500;
     }
 }

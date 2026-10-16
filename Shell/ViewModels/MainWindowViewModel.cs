@@ -44,6 +44,8 @@ namespace Shell.ViewModels
 
 
         }
+
+        public bool IsHardwareInitialized { get; private set; }
         /// <summary>
         /// 收到登录成功事件的响应方法
         /// </summary>
@@ -51,13 +53,20 @@ namespace Shell.ViewModels
 
         private void OnLoginResultReceived(CurrentUser user)
         {
-            //登录成功后，加载MainModule
-            MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
-            //导航到MainView区域
-            MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
-
-
-
+            
+            if (IsHardwareInitialized)
+            {
+                //登录成功后，加载MainModule
+                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
+                //导航到MainView区域
+                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
+            }
+            else
+            {
+                //加载硬件初始化模块
+                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationInitializeModule);
+                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.InitializeView);
+            }
         }
 
         private Window MainWindow { get; set; } = Application.Current.MainWindow;
@@ -77,13 +86,14 @@ namespace Shell.ViewModels
                     break;
 
                 case ViewNames.MainView:
-                    MainWindow.Width = 1920;
-                    MainWindow.Height = 1080;
-                    MainWindow.WindowState = WindowState.Maximized;
+                    MainWindow.Width = 1000;
+                    MainWindow.Height = 800;
+                    //MainWindow.WindowState = WindowState.Maximized;
                     MainWindow.ResizeMode = ResizeMode.CanResize;
                     MainWindow.SizeToContent = SizeToContent.Manual;
                     MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                     break;
+               
                 default:
                     break;
             }

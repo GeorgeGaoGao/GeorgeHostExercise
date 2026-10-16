@@ -1,4 +1,5 @@
-﻿using Company.Application.Share.Prism;
+﻿using Company.Application.Initialize.Views;
+using Company.Application.Share.Prism;
 using Company.Core.Extensions;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace Company.Application.Initialize
 {
-    [Module(ModuleName =ModuleNames.ApplicationInitializeModule,OnDemand =true)]
+    [Module(ModuleName = ModuleNames.ApplicationInitializeModule, OnDemand = true)]
     public class ApplicationInitializeModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
@@ -17,7 +18,8 @@ namespace Company.Application.Initialize
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-           containerRegistry.RegisterTypesOfAssembly(Assembly.GetExecutingAssembly());
+            containerRegistry.RegisterTypesOfAssembly(Assembly.GetExecutingAssembly());
+            containerRegistry.RegisterForNavigation<InitializeView>();
         }
     }
 }

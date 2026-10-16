@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Company.Core.IOC
 {
@@ -19,6 +21,7 @@ namespace Company.Core.IOC
         public static IDialogService DialogService { get; private set; }//对话框管理器
         public static IEventAggregator EventAggregator { get; private set; }//事件聚合器，也就是消息总线
         public static IModuleManager ModuleManager { get; private set; }//模块管理器
+        public static Dispatcher Dispatcher { get; private set; } 
         public MyPrismProvider(
             ILanguageManager languageManager,
             IContainerExtension container,
@@ -34,6 +37,7 @@ namespace Company.Core.IOC
             DialogService = dialogService;
             EventAggregator = eventAggregator;
             ModuleManager = moduleManager;
+            Dispatcher = Application.Current.Dispatcher;
         }
     }
 }
