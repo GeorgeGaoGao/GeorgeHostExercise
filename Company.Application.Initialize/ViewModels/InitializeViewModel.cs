@@ -38,42 +38,24 @@ namespace Company.Application.Initialize.ViewModels
 
             Message = "硬件初始化完成";
 
+
+
             //加载主界面
             await Task.Delay(100).ContinueWith(p =>
             {
                 MyPrismProvider.Dispatcher.Invoke(() =>
                 {
                     //加载主界面
-                    MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
+                    MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationInitializeModule);
                     //导航到主区域
-                    MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
+                    MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.InitializeView);
                 });
 
-                //});
-                //if (!HardwareLifetimeManager.IsInitialized)
-                //{
-                //    Message = $"准备初始化硬件。。。";
-                //    var result = await HardwareLifetimeManager.InitializeAsync();
-                //    if (!result.IsSuccessful)
-                //    {
-                //        Message = result.Message;
-                //        return;
-                //    }
 
-                //}
-                //Message = "硬件初始化完成。";
-
-                ////await Task.Delay(1000).ContinueWith(x =>
-                ////{
-                ////    MyPrismProvider.Dispatcher.Invoke(() =>
-                ////    {
-                ////        MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
-                ////        //导航到MainView区域
-                ////        MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
-                ////    });
-                ////});
             });
-            }
+
+
+        }
         [Reactive]
         public string Message { get; set; }
 

@@ -53,6 +53,7 @@ namespace Shell.ViewModels
 
         private void OnLoginResultReceived(CurrentUser user)
         {
+
             
             if (IsHardwareInitialized)
             {
@@ -64,8 +65,8 @@ namespace Shell.ViewModels
             else
             {
                 //加载硬件初始化模块
-                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationInitializeModule);
-                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.InitializeView);
+                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
+                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
             }
         }
 
