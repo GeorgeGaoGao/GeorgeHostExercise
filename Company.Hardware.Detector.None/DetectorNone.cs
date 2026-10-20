@@ -1,5 +1,6 @@
 ﻿using Company.Core.Helper;
 using Company.Core.Model;
+using Company.Logger;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -36,7 +37,7 @@ namespace Company.Hardware.Detector.None
             {
                 if (_data.Width!=DetectorConfig.Width||_data.Height!=DetectorConfig.Height)
                 {
-                    throw new Exception($"系统设置中的平板探测器的分辨率与实际分辨率不相同");
+                    Logs.LogError(new Exception($"系统设置中的平板探测器的分辨率与实际分辨率不相同"));
                 }
                 using (var temp=_data.DeepClone())
                 {
@@ -56,7 +57,7 @@ namespace Company.Hardware.Detector.None
             }
             else
             {
-                throw new Exception($"File {filename} does not exist.");
+                Logs.LogError(new Exception($"File {filename} does not exist."));
             }
             _data=_data ?? new UnmanagedArray2D<ushort>(DetectorConfig.Width, DetectorConfig.Height);
             Thread.Sleep(1000);

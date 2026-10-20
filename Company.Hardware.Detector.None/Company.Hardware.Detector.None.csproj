@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Company.Core\Company.Core.csproj" />
     <ProjectReference Include="..\Company.Hardware.Detector\Company.Hardware.Detector.csproj" />
+    <ProjectReference Include="..\Company.Logger\Company.Logger.csproj" />
   </ItemGroup>
 
 

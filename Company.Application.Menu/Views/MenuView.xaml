@@ -11,7 +11,7 @@
             >
     <Menu FontSize="16" Padding="5">
         <MenuItem Header="设置">
-            <MenuItem Header="系统设置"/>
+            <MenuItem Header="系统设置" Command="{Binding SystemConfigCommand}"/>
         </MenuItem>
         <MenuItem Header="硬件">
             <MenuItem Header="运动轴"/>

@@ -8,6 +8,7 @@ using System.Text;
 namespace Company.Application.Menu
 {
     [Module(ModuleName = ModuleNames.ApplicationMenuModule,OnDemand =true)]
+    [ModuleDependency(ModuleNames.ApplicationConfigModule)]
     public class ApplicationMenuModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

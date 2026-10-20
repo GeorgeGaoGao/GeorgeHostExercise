@@ -1,6 +1,7 @@
 ﻿using Company.Application.Menu;
 using Company.Application.Share.Prism;
 using Company.Core;
+using Company.Logger;
 using Shell.Views;
 using System.Configuration;
 using System.Data;
@@ -13,6 +14,24 @@ namespace Shell
     /// </summary>
     public partial class App : PrismApplication
     {
+        public App()
+        {
+            //程序域异常
+            AppDomain.CurrentDomain.UnhandledException += (s, e) =>
+            {
+                Logs.LogError((Exception)e.ExceptionObject);
+            };
+            //应用程序异常
+            Current.DispatcherUnhandledException += (s, e) =>
+            {
+                Logs.LogError(e.Exception);
+            };
+            //多线程异常
+            TaskScheduler.UnobservedTaskException += (s, e) =>
+            {
+                Logs.LogError(e.Exception);
+            };
+        }
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
@@ -30,6 +49,16 @@ namespace Shell
         protected override IModuleCatalog CreateModuleCatalog()
         {
             return new DirectoryModuleCatalog() { ModulePath = ModuleNames.ModulePath };
+        }
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Logs.LogInfo("程序启动。");
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            Logs.LogInfo("程序结束。");
         }
     }
 

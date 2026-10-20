@@ -9,6 +9,7 @@ using System.Text;
 namespace Company.Application.Initialize
 {
     [Module(ModuleName = ModuleNames.ApplicationInitializeModule, OnDemand = true)]
+    [ModuleDependency(ModuleNames.ApplicationConfigModule)]
     public class ApplicationInitializeModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
