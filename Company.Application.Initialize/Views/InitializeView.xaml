@@ -13,8 +13,11 @@
             <b:InvokeCommandAction Command="{Binding LoadedCommand}"/>
         </b:EventTrigger>
     </b:Interaction.Triggers>
-    <Grid>
+
+    <StackPanel>
+        <Button Command="{Binding ChangeTitleCommand}" Width="150" Height="50"/>
+
         <TextBlock Text="{Binding Title}" FontSize="50" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBlock Text="{Binding Message}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
-    </Grid>
+    </StackPanel>
 </UserControl>

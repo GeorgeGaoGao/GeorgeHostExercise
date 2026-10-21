@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Application.Initialize.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,9 @@ namespace Company.Application.Initialize.Views
         public InitializeView()
         {
             InitializeComponent();
+
+            
+           
         }
     }
 }

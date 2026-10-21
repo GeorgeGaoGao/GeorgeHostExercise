@@ -6,22 +6,45 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace Company.Application.Initialize.ViewModels
 {
-    public class InitializeViewModel : ReactiveObject
+    public class InitializeViewModel : BindableBase
     {
         public ICommand LoadedCommand { get; }
+        public ICommand ChangeTitleCommand {  get; }
+        
+        
         public InitializeViewModel(HardwareLifetimeManager hardwareLifetimeManager)
         {
             HardwareLifetimeManager = hardwareLifetimeManager;
-            //LoadedCommand = new DelegateCommand(OnLoadedCommand);
-            LoadedCommand = ReactiveCommand.Create(OnLoadedCommand);
+            LoadedCommand = new DelegateCommand(OnLoadedCommand);
+            //LoadedCommand = ReactiveCommand.Create(OnLoadedCommand);
+            Message = "构造函数里得到的值。";
+
+            ChangeTitleCommand = new DelegateCommand(OnChangeTitleCommand);
         }
-        public string Title { get; set; } = "this is title";
+
+        private void OnChangeTitleCommand()
+        {
+            Title = "这是我调用eventtrigger改变后的title";
+        }
+
+
+        private string _title = "this is title";
+
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; RaisePropertyChanged(); }
+        }
+
+
         private async void OnLoadedCommand()
         {
 
@@ -56,8 +79,15 @@ namespace Company.Application.Initialize.ViewModels
 
 
         }
-        [Reactive]
-        public string Message { get; set; }
+        //[Reactive]
+        private string _message;
+
+        public string Message
+        {
+            get { return _message; }
+            set { _message = value; RaisePropertyChanged(); }
+        }
+
 
         public HardwareLifetimeManager HardwareLifetimeManager { get; set; }
 

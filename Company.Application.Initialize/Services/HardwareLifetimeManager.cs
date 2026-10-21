@@ -47,7 +47,7 @@ namespace Company.Application.Initialize.Services
 
                 msg = msg.Remove(msg.Length - 1);
 
-                return new InitializationResult { Message = msg, IsSuccessful = false };
+                //return new InitializationResult { Message = msg, IsSuccessful = false };
             }
 
 
