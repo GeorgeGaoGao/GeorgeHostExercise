@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Company.Application.Initialize\Company.Application.Initialize.csproj" />
     <ProjectReference Include="..\Company.Application.Menu\Company.Application.Menu.csproj" />
     <ProjectReference Include="..\Company.Application.Share\Company.Application.Share.csproj" />
     <ProjectReference Include="..\Company.Core\Company.Core.csproj" />

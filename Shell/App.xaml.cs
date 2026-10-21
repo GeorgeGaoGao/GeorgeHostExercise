@@ -1,4 +1,5 @@
-﻿using Company.Application.Menu;
+﻿using Company.Application.Initialize.Views;
+using Company.Application.Menu;
 using Company.Application.Share.Prism;
 using Company.Core;
 using Company.Logger;
@@ -35,6 +36,7 @@ namespace Shell
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
+           
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

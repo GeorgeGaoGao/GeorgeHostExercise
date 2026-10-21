@@ -1,4 +1,5 @@
 ﻿using Company.Application.Initialize.Models;
+using Company.Application.Share.Config;
 using Company.Core.IOC;
 using Company.Hardware.Camera;
 using Company.Hardware.Detector;
@@ -11,8 +12,10 @@ namespace Company.Application.Initialize.Services
     [ExposedService(Lifetime.Singleton)]
     public class HardwareLifetimeManager
     {
-        public HardwareLifetimeManager(ICamera camera, IDetector detector)
+        private readonly ISystemConfigProvider _systemConfigProvider;
+        public HardwareLifetimeManager(ISystemConfigProvider systemConfigProvider, ICamera camera, IDetector detector)
         {
+            _systemConfigProvider = systemConfigProvider;
             Camera = camera;
             Detector = detector;
         }

@@ -12,9 +12,9 @@ namespace Shell.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private int _title = 9999;
+        private string _title = "这是MainWindow";
         public ICommand LoadedCommand { get; }
-        public int Title
+        public string Title
         {
             get { return _title; }
             set { _title = value; RaisePropertyChanged(); }
@@ -64,9 +64,16 @@ namespace Shell.ViewModels
             }
             else
             {
+
                 //加载硬件初始化模块
-                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
-                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
+                MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationInitializeModule);
+                //导航到主区域
+                MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.InitializeView);
+
+
+                ////加载硬件初始化模块
+                //MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
+                //MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
             }
         }
 

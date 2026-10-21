@@ -21,7 +21,7 @@ namespace Company.Application.Initialize.ViewModels
             //LoadedCommand = new DelegateCommand(OnLoadedCommand);
             LoadedCommand = ReactiveCommand.Create(OnLoadedCommand);
         }
-
+        public string Title { get; set; } = "this is title";
         private async void OnLoadedCommand()
         {
 
@@ -41,14 +41,14 @@ namespace Company.Application.Initialize.ViewModels
 
 
             //加载主界面
-            await Task.Delay(100).ContinueWith(p =>
+            await Task.Delay(5000).ContinueWith(p =>
             {
                 MyPrismProvider.Dispatcher.Invoke(() =>
                 {
                     //加载主界面
-                    MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationInitializeModule);
+                    MyPrismProvider.ModuleManager.LoadModule(ModuleNames.ApplicationMainModule);
                     //导航到主区域
-                    MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.InitializeView);
+                    MyPrismProvider.RegionManager.RequestNavigate(RegionNames.MainRegion, ViewNames.MainView);
                 });
 
 

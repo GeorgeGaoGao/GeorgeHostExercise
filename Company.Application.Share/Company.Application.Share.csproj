@@ -15,4 +15,10 @@
     <PackageReference Include="ReactiveUI.WPF" Version="25.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Core\Company.Core.csproj" />
+    <ProjectReference Include="..\Company.Hardware.Camera\Company.Hardware.Camera.csproj" />
+    <ProjectReference Include="..\Company.Hardware.Detector\Company.Hardware.Detector.csproj" />
+  </ItemGroup>
+
 </Project>

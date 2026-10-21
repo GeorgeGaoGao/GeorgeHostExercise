@@ -13,7 +13,7 @@ namespace Company.Core.Config
         private const string root = "Config";
         private string GetFullPath(ValueType key)
         {
-            return Path.Combine(root,key.GetType().FullName+key.ToString()+".json");
+            return Path.Combine(root,key.GetType().FullName+"."+key.ToString()+".json");
         }
         public T Read<T>(ValueType key)
         {
