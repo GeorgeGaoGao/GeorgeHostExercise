@@ -1,4 +1,5 @@
-﻿ using System;
+﻿using Company.Logger;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Company.Hardware.Detector
         public bool IsInitialized { get; private set; }
 
         public bool IsGrabbing { get; set; }
+
+
         public event Action<DetectorImage> ImageCaptured;
         public void OnImageCaptured(DetectorImage detectorImage)
         {
@@ -26,13 +29,19 @@ namespace Company.Hardware.Detector
             }
         }
 
-        public bool Initialize(DetectorConfig detectorConfig)
+        public bool Initialize(IDetectorConfigProvider detectorConfigProvider)
         {
+            DetectorConfig = detectorConfigProvider.DetectorConfig;
+            detectorConfigProvider.ConfigChanged += () =>
+            {
+                //todo 重新初始化
+                Logs.LogInfo($"平板探测器重新初始化 Width:{DetectorConfig.Width}  Height:{DetectorConfig.Height}");
+                DoInitial();
+            };
             if (IsInitialized)
             {
                 throw new Exception($"不能重复初始化。");
             }
-            this.DetectorConfig = detectorConfig;
 
             if (DoInitial())
             {

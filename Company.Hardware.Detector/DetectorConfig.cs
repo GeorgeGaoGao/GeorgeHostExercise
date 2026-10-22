@@ -8,7 +8,7 @@ namespace Company.Hardware.Detector
     public class DetectorConfig
     {
         [DisplayName("默认图像")]
-        public string Photo { get; set; } = "1.tiff";
+        public string Photo { get; set; } = "1.TIF";
         [DisplayName("默认宽度")]
         public int Width { get; set; } = 1500;
         [DisplayName("默认高度")]

@@ -32,7 +32,7 @@ namespace Company.Application.Initialize.Services
             }
 
             Task<bool> task_camera = Task.Run(() => Camera.Initialize(_systemConfigProvider));
-            Task<bool> task_detector = Task.Run(() => Detector.Initialize(new DetectorConfig()));
+            Task<bool> task_detector = Task.Run(() => Detector.Initialize(_systemConfigProvider));
 
             var list = await Task.WhenAll(task_camera, task_detector);//等待
             bool result = list.All(p => p);

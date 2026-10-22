@@ -8,7 +8,7 @@ namespace Company.Hardware.Detector
     {
         event Action<DetectorImage> ImageCaptured;
         bool IsInitialized { get; }
-        bool Initialize(DetectorConfig detectorConfig);
+        bool Initialize(IDetectorConfigProvider detectorConfigProvider);
         /// <summary>
         /// 连续收集图像
         /// </summary>

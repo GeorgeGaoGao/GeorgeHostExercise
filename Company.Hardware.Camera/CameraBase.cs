@@ -32,7 +32,9 @@ namespace Company.Hardware.Camera
             {
                 //todo 重新初始化
 
-                Logs.LogInfo($"相机 Width:{CameraConfig.Width} Height: {CameraConfig.Height}");
+                Logs.LogInfo($"相机重新初始化 Width:{CameraConfig.Width} Height: {CameraConfig.Height}");
+                DoInitial();
+
             };
             if (IsInitialized)
             {
