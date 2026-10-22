@@ -3,4 +3,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <System:String x:Key="用户名">用户名：</System:String>
     <System:String x:Key="密码">密   码：</System:String>
+    <System:String x:Key="确定">确定</System:String>
+    <System:String x:Key="取消">取消</System:String>
 </ResourceDictionary>

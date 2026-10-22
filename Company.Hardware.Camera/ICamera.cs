@@ -8,7 +8,7 @@ namespace Company.Hardware.Camera
     {
         event Action<Photo> ImageCaptured;
         bool IsInitialized { get; }
-        bool Initialize(CameraConfig cameraConfig);
+        bool Initialize(ICameraConfigProvider cameraConfigProvider);
         bool Trigger();
         void Close();
     }

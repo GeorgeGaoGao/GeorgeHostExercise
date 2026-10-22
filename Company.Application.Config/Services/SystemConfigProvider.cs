@@ -29,6 +29,11 @@ namespace Company.Application.Config.Services
             DetectorConfig = _systemConfigManager.Config.DetectorConfig;
         }
 
+        internal void Invoke()
+        {
+            ConfigChanged?.Invoke();
+        }
+
         public SoftwareConfig SoftwareConfig { get; set; }
 
         public CameraConfig CameraConfig { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Logger;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -24,14 +25,20 @@ namespace Company.Hardware.Camera
             }
         }
 
-        public bool Initialize(CameraConfig cameraConfig)
+        public bool Initialize(ICameraConfigProvider cameraConfigProvider)
         {
-           
+            CameraConfig = cameraConfigProvider.CameraConfig;
+            cameraConfigProvider.ConfigChanged += () =>
+            {
+                //todo 重新初始化
+
+                Logs.LogInfo($"相机 Width:{CameraConfig.Width} Height: {CameraConfig.Height}");
+            };
             if (IsInitialized)
             {
-                throw new Exception("相机重复初始化");
-            } 
-            CameraConfig = cameraConfig;
+                Logs.LogError(new Exception("相机重复初始化"));
+            }
+
             if (DoInitial())
             {
                 IsInitialized = true;
@@ -40,8 +47,8 @@ namespace Company.Hardware.Camera
             return false;
         }
 
-        
-       
+
+
         public abstract bool Trigger();
         public abstract bool DoClose();
         public abstract bool DoInitial();

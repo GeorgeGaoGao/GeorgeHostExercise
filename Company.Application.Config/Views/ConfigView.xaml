@@ -1,10 +1,78 @@
 ﻿<UserControl x:Class="Company.Application.Config.Views.ConfigView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"     
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              prism:ViewModelLocator.AutoWireViewModel="True"
-             Width="400" Height="300">
+             xmlns:myControls="clr-namespace:Company.UI.Controls;assembly=Company.UI"
+             Width="600" Height="400"
+             >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TabControl controls:HeaderedControlHelper.HeaderFontSize="20" >
+            <TabItem Header="软件设置">
+                <StackPanel>
+                     <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="软件名称：" Width="100"/>
+                    <TextBox Text="{Binding SystemConfigManager.Config.SoftwareConfig.Name, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200" />
+                </StackPanel>
+                </StackPanel>
+               
+            </TabItem>
+            <TabItem Header="相机设置">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="默认图像" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.CameraConfig.Photo, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="图像宽度" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.CameraConfig.Width, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="图像高度" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.CameraConfig.Height, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </TabItem>
             
+            
+            <TabItem Header="平板探测器设置">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="默认图像" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.DetectorConfig.Photo, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="图像宽度" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.DetectorConfig.Width, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="图像高度" Width="100"/>
+                        <TextBox Text="{Binding SystemConfigManager.Config.DetectorConfig.Height, Mode=TwoWay, 
+                        UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </TabItem>
+            <TabItem Header="平板探测器设置2">
+                <myControls:WpfPropertyGrid SelectedObject="{Binding SystemConfigManager.Config.DetectorConfig}"/>
+            </TabItem>
+        </TabControl>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="{DynamicResource ResourceKey=确定}" Command="{Binding OKCommand}" 
+                    Width="80" Height="40" Margin="5" FontSize="16"/>
+            <Button Content="{DynamicResource ResourceKey=取消}" IsCancel="True" Width="80" Height="40" Margin="5" FontSize="16"/>
+        </DockPanel>
     </Grid>
 </UserControl>

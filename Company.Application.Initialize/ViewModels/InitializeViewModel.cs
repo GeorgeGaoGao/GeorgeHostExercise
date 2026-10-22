@@ -64,7 +64,7 @@ namespace Company.Application.Initialize.ViewModels
 
 
             //加载主界面
-            await Task.Delay(5000).ContinueWith(p =>
+            await Task.Delay(500).ContinueWith(p =>
             {
                 MyPrismProvider.Dispatcher.Invoke(() =>
                 {
