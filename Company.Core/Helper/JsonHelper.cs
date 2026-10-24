@@ -22,7 +22,7 @@ namespace Company.Core.Helper
             string content = File.ReadAllText(fileName);
             return Deserialize<T>(content);
         }
-        private static T Deserialize<T>(string content)
+        public static T Deserialize<T>(string content)
         {
             return JsonConvert.DeserializeObject<T>(content);
         }
@@ -38,7 +38,7 @@ namespace Company.Core.Helper
             File.WriteAllText(fileName, content);
         }
 
-        private static string Serialize(object obj, bool indented)
+        public static string Serialize(object obj, bool indented=false)
         {
             Formatting formatting = indented ? Formatting.Indented : Formatting.None;
             return JsonConvert.SerializeObject(obj, formatting);

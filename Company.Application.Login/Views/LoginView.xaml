@@ -12,9 +12,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    
+
                     <FontFamily x:Key="FontAwesome">pack://application:,,,/Company.UI;component/Fonts/#FontAwesome</FontFamily>
-                   
+
                 </ResourceDictionary>
                 <ResourceDictionary Source="/Company.UI;component/Style/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -44,9 +44,9 @@
         </Grid>
         <Grid Grid.Column="1" Background="White">
             <StackPanel Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center">
-            
+
                 <StackPanel Orientation="Horizontal" Margin="10">
-                   
+
                     <TextBlock Text="{DynamicResource 用户名}"  Width="100"/>
                     <TextBox Width="120" Text="{Binding CurrentUser.UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
@@ -55,18 +55,19 @@
                     <TextBox Width="120" Text="{Binding CurrentUser.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10">
+                        <CheckBox IsChecked="{Binding IsRemember }" Content="记住密码" Margin="5"/>
+                        <CheckBox IsChecked="{Binding IsAutoLogin }" Content="自动登录" Margin="5"/>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10">
                     <Button Content="登录" Width="220" Command="{Binding LoginCommand}"/>
                 </StackPanel>
-                <!--登录失败提示
-                    <StackPanel Visibility="Hidden">
-                    <TextBlock Text="登录失败，请检查用户名和密码！" Foreground="Red"/>
-                </StackPanel>
-                -->
+
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="15" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <RadioButton Name="CN" Content="简体中文" IsChecked="True" Margin="5"/>
                 <RadioButton Name="TW" Content="繁體中文" IsChecked="False" Margin="5"/>
-                <RadioButton Name="US" Content="English" IsChecked="False" Margin="5"/> 
+                <RadioButton Name="US" Content="English" IsChecked="False" Margin="5"/>
             </StackPanel>
         </Grid>
     </Grid>

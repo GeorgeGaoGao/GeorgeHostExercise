@@ -1,0 +1,347 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\AutoFocus.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\AutoFocus.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 AutoFocus"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "AutoFocus，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2026",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_AutoFocus_DIALOG DIALOGEX 0, 0, 675, 371
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "MvCamera_SDK_AutoFocus"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "初始化",IDC_INIT_STATIC,431,7,237,70
+    PUSHBUTTON      "查找设备",IDC_ENUM_BUTTON,450,18,181,14
+    PUSHBUTTON      "打开相机",IDC_OPEN_BUTTON,450,37,78,14
+    PUSHBUTTON      "关闭相机",IDC_CLOSE_BUTTON,559,37,72,14
+    GROUPBOX        "镜头基本参数",IDC_LENS_INFO_STATIC,431,84,237,90
+    GROUPBOX        "手动调焦",IDC_MANUAL_FOCUS_STATIC,431,180,237,39
+    CONTROL         "",IDC_DISPLAY_STATIC,"Static",SS_BLACKFRAME,12,27,414,332
+    PUSHBUTTON      "打开镜头",IDC_OPEN_LENS_BUTTON,451,56,77,14
+    PUSHBUTTON      "关闭镜头",IDC_CLOSE_LENS_BUTTON,559,56,72,14
+    EDITTEXT        IDC_FP_START_EDIT,482,240,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_END_EDIT,588,240,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COARSE_STEP_EDIT,483,261,52,14,ES_AUTOHSCROLL
+    LTEXT           "起始光焦度",IDC_FP_START_STATIC,433,243,46,8
+    LTEXT           "结束光焦度",IDC_FP_END_STATIC,540,243,40,8
+    LTEXT           "粗调步数",IDC_COARSE_STEP_STATIC,433,264,46,8
+    PUSHBUTTON      "执行对焦",IDC_EXEC_FOCUS_BUTTON,510,329,68,21
+    COMBOBOX        IDC_DEVICE_COMBO,12,11,409,77,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_FOCALPOWER_EDIT,465,195,115,14,ES_AUTOHSCROLL
+    LTEXT           "光焦度",IDC_FOCALPOWER_STATIC,437,197,24,8
+    PUSHBUTTON      "设置",IDC_SET_FOCALPOWER_BUTTON,587,194,53,14
+    GROUPBOX        "自动对焦",IDC_AUTOFOCUS_STATIC,430,226,238,133
+    EDITTEXT        IDC_STABLE_TIME_EDIT,482,116,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_MAX_EDIT,482,134,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_CURRENT_EDIT,482,152,97,14,ES_AUTOHSCROLL
+    LTEXT           "镜头稳定时间",IDC_STABLE_TIME_STATIC,436,119,46,8
+    LTEXT           "光焦度最大值",IDC_FP_MAX_STATIC,435,137,44,8
+    LTEXT           "光焦度当前值",IDC_FP_CURRENT_STATIC,435,155,46,8
+    EDITTEXT        IDC_TRIGGER_DELAY_EDIT,586,116,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_MIN_EDIT,586,134,52,14,ES_AUTOHSCROLL
+    LTEXT           "触发延迟时间",IDC_TRIGGER_DELAY_STATIC,538,119,46,8
+    LTEXT           "光焦度最小值",IDC_FP_MIN_STATIC,538,136,48,8
+    LTEXT           "清晰点光焦度",IDC_RESULT_FP_STATIC,433,285,46,8
+    EDITTEXT        IDC_RESULT_FP_EDIT,483,283,52,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "刷新",IDC_REFRESH_BUTTON,586,152,53,14
+    EDITTEXT        IDC_LENS_MODEL_NAME_EDIT,482,98,52,14,ES_AUTOHSCROLL
+    LTEXT           "镜头型号",IDC_LENS_MODEL_NAME_STATIC,436,102,39,8
+    EDITTEXT        IDC_LENS_FIRMWARE_EDIT,586,98,52,14,ES_AUTOHSCROLL
+    LTEXT           "镜头驱动版本",IDC_LENS_FIRMWARE_STATIC,538,102,46,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "AutoFocus.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "AutoFocus.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_AutoFocus_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 668
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 364
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "关于 AutoFocus(&A)..."
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About AutoFocus"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "AutoFocus,V1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2026",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_AutoFocus_DIALOG DIALOGEX 0, 0, 681, 378
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "MvCamera_SDK_AutoFocus"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Initialization",IDC_INIT_STATIC,427,7,224,70
+    PUSHBUTTON      "Search Device",IDC_ENUM_BUTTON,450,18,181,14
+    PUSHBUTTON      "Open Device",IDC_OPEN_BUTTON,450,37,78,14
+    PUSHBUTTON      "Close Device",IDC_CLOSE_BUTTON,559,37,72,14
+    GROUPBOX        "Basic Parameters",IDC_LENS_INFO_STATIC,427,84,247,93
+    GROUPBOX        "Manual Focus",IDC_MANUAL_FOCUS_STATIC,427,183,247,39
+    CONTROL         "",IDC_DISPLAY_STATIC,"Static",SS_BLACKFRAME,12,27,409,333
+    PUSHBUTTON      "Open Lens",IDC_OPEN_LENS_BUTTON,451,56,77,14
+    PUSHBUTTON      "Close Lens",IDC_CLOSE_LENS_BUTTON,559,56,72,14
+    EDITTEXT        IDC_FP_START_EDIT,496,250,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_END_EDIT,612,250,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_COARSE_STEP_EDIT,496,271,52,14,ES_AUTOHSCROLL
+    LTEXT           "Start Focal Power",IDC_FP_START_STATIC,433,253,58,8
+    LTEXT           "End Focal Power",IDC_FP_END_STATIC,551,253,55,8
+    LTEXT           "Coarse Steps",IDC_COARSE_STEP_STATIC,433,274,46,8
+    PUSHBUTTON      "Execute Focus",IDC_EXEC_FOCUS_BUTTON,511,334,86,20
+    COMBOBOX        IDC_DEVICE_COMBO,12,11,409,77,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_FOCALPOWER_EDIT,474,199,136,14,ES_AUTOHSCROLL
+    LTEXT           "Focal Power",IDC_FOCALPOWER_STATIC,433,201,39,8
+    PUSHBUTTON      "Set",IDC_SET_FOCALPOWER_BUTTON,614,199,53,14
+    GROUPBOX        "Auto Focus",IDC_AUTOFOCUS_STATIC,427,228,247,133
+    EDITTEXT        IDC_STABLE_TIME_EDIT,500,116,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_MAX_EDIT,500,134,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_CURRENT_EDIT,500,153,111,14,ES_AUTOHSCROLL
+    LTEXT           "Lens Stable Time",IDC_STABLE_TIME_STATIC,433,120,55,8
+    LTEXT           "Max Focal Power",IDC_FP_MAX_STATIC,433,138,58,8
+    LTEXT           "Current Focal Power",IDC_FP_CURRENT_STATIC,433,156,66,8
+    EDITTEXT        IDC_TRIGGER_DELAY_EDIT,616,117,52,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_FP_MIN_EDIT,616,135,52,14,ES_AUTOHSCROLL
+    LTEXT           "Trigger Delay Time",IDC_TRIGGER_DELAY_STATIC,553,120,60,8
+    LTEXT           "Min Focal Power",IDC_FP_MIN_STATIC,555,137,53,8
+    LTEXT           "Result Focal Power",IDC_RESULT_FP_STATIC,433,294,59,8
+    EDITTEXT        IDC_RESULT_FP_EDIT,496,292,52,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Refresh",IDC_REFRESH_BUTTON,615,154,53,14
+    EDITTEXT        IDC_LENS_MODEL_NAME_EDIT,500,98,52,14,ES_AUTOHSCROLL
+    LTEXT           "Model Name",IDC_LENS_MODEL_NAME_STATIC,436,102,39,8
+    EDITTEXT        IDC_LENS_FIRMWARE_EDIT,615,99,52,14,ES_AUTOHSCROLL
+    LTEXT           "Firmware Version",IDC_LENS_FIRMWARE_STATIC,555,101,55,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_AutoFocus_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 674
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 371
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "About AutoFocus(&A)..."
+END
+
+#endif    // 英语 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\AutoFocus.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

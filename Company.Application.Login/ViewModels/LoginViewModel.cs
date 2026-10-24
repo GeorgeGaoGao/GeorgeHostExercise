@@ -1,5 +1,6 @@
 ﻿using Company.Application.Share.Events;
 using Company.Application.Share.Model;
+using Company.Core.Cache;
 using Company.Core.Dialog.Views;
 using Company.Core.IOC;
 using ReactiveUI;
@@ -15,17 +16,48 @@ namespace Company.Application.Login.ViewModels
     public partial class LoginViewModel : ReactiveObject
     {
         [Reactive]
-        public partial CurrentUser CurrentUser { get; set; }
+        public bool IsRemember { get; set; }
+        [Reactive]
+        public bool IsAutoLogin { get; set; }
+
+        [Reactive]
+        public partial CurrentUser CurrentUser { get; set; } = new CurrentUser();
+        private ICacheManager CacheManager { get; }
         public ICommand LoginCommand { get; set; }
-        public LoginViewModel()
+        public LoginViewModel(ICacheManager cacheManager)
         {
 
             LoginCommand = new DelegateCommand(OnLoginCommand);
-            CurrentUser = new CurrentUser()
+           
+            CacheManager= cacheManager;
+            LoadUserCache();
+
+            //是否自动登录
+
+            Task.Delay(1500).ContinueWith((t) =>
             {
-                UserName = "Admin",
-                Password = "123456"
-            };
+                if (IsAutoLogin)
+                {
+                    LoginCommand.Execute(null);
+                }
+            });
+        }
+
+        private void LoadUserCache()
+        {
+            if (CacheManager.Get(CacheKey.User,out CurrentUser user))
+            {
+                CurrentUser.UserName = user.UserName;
+                CurrentUser.Password = user.Password;
+            }
+            if (CacheManager.Get(CacheKey.IsRember,out bool isRember))
+            {
+                IsRemember = isRember;
+            }
+            if (CacheManager.Get(CacheKey.IsAutoLogin,out bool isAutoLogin))
+            {
+                IsAutoLogin = isAutoLogin;
+            }
         }
 
         private void OnLoginCommand()
@@ -34,6 +66,20 @@ namespace Company.Application.Login.ViewModels
             {
                 return;
             }
+            
+
+            if (IsRemember)
+            {
+                CacheManager.Set(CacheKey.User, CurrentUser);
+            }
+            else
+            {
+                CacheManager.Delete(CacheKey.User);
+            }
+
+            CacheManager.Set(CacheKey.IsRember, IsRemember);
+            CacheManager.Set(CacheKey.IsAutoLogin, IsAutoLogin);
+
             if (CurrentUser.UserName == "Admin" && CurrentUser.Password == "123456")
             {
                 MyPrismProvider.EventAggregator.GetEvent<LoginSuccessEvent>().Publish(CurrentUser);
@@ -42,6 +88,7 @@ namespace Company.Application.Login.ViewModels
             {
                 PopupBox.ShowPopupBox("用户名或密码错误", 3);
             }
+
 
         }
     }
