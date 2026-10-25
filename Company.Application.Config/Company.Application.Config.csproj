@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
@@ -15,6 +15,6 @@
     <ProjectReference Include="..\Company.UI\Company.UI.csproj" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(ProjectDir)bin\Debug\net10.0-windows7.0\$(ProjectName).dll&quot; &quot;$(SolutionDir)Shell\bin\Debug\net10.0-windows\Modules\&quot; /Y /S &#xD;&#xA;xcopy &quot;$(ProjectDir)bin\Release\net10.0-windows7.0\$(ProjectName).dll&quot; &quot;$(SolutionDir)Shell\bin\Release\net10.0-windows\Modules\&quot; /Y /S " />
+    <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Shell\bin\$(Configuration)\$(TargetFramework)\Modules\&quot; /Y" />
   </Target>
 </Project>

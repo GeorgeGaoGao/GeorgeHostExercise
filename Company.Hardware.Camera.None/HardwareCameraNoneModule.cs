@@ -16,7 +16,7 @@ namespace Company.Hardware.Camera.None
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterTypesOfAssembly(Assembly.GetExecutingAssembly());
-            if (!containerRegistry.IsRegistered<ICamera>())
+             if (!containerRegistry.IsRegistered<ICamera>())
             {
                 containerRegistry.RegisterSingleton<ICamera, CameraNone>();
             }

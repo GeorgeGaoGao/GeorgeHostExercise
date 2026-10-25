@@ -51,8 +51,8 @@ namespace Company.Hardware.Camera
 
 
 
-        public abstract bool Trigger();
-        public abstract bool DoClose();
-        public abstract bool DoInitial();
+        protected abstract bool Trigger();
+        protected abstract bool DoClose();
+        protected abstract bool DoInitial();
     }
 }
