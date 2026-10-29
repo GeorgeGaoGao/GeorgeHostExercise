@@ -10,6 +10,7 @@ namespace Company.Hardware.ControlCard.AdTech
     public class ControlCardAdTech : ControlCardBase
     {
         private int _cardNo;//控制卡卡号
+        private readonly ControlCardBit 急停=new ControlCardBit(2,1);
         public override bool IsAxisHomed => throw new NotImplementedException();
 
         public override bool GoHome(out string message)
@@ -31,8 +32,39 @@ namespace Company.Hardware.ControlCard.AdTech
             int board = 0;
             int logic = 0;
 
+            
+            //参  数：  cardno      --  可用控制卡卡号
+            //          axis        --  轴号, [1,32], 上限以当前系统实际连接总线伺服数为准
+            //          mode        --  信号类型, [0,4], 0:正限位, 1:负限位, 2:原点, 3:保留, 4:急停(此时axis无实际意义)
+            //          enable      --  使能标识, [0,1], 0:关闭, 1:使能
+            //          logic       --  有效电平, [0,1], 0:低电平有效, 1:高电平有效
+            //          admode      --  停止模式, [0,1], 0:减速停止, 1:立即停止
+            //备  注：	1. 默认正负限位低电平有效, 原点/紧急停止信号无效
+            //          2. 正负限位和紧急停止信号仅支持立即停止模式
+
             //设置与获取原点/限位/急停信号输入端口映射
-            adt_card_632xe.adt_set_axis_io_map(_cardNo, 0, 4, 0, 0);
+            result += adt_card_632xe.adt_set_axis_io_map(_cardNo, 0, 4, 急停.Board,急停.Port);
+            //设置与获取原点/限位/急停信号模式与有效电平
+            result += adt_card_632xe.adt_set_hardlimit_mode(_cardNo, 0, 4, 1, 1, 1);
+
+            foreach (var axisType in AxisTypes)
+            {
+                int axis = (int)axisType;
+
+                //正限位
+                result += adt_card_632xe.adt_set_axis_io_map(_cardNo, axis, 0, board, 0);
+                result += adt_card_632xe.adt_set_hardlimit_mode(_cardNo, axis, 0, 1, logic, 1);
+                //负限位
+                result += adt_card_632xe.adt_set_axis_io_map(_cardNo, axis, 1, board, 1);
+                result += adt_card_632xe.adt_set_hardlimit_mode(_cardNo, axis, 1, 1, logic, 1);
+                //原点信号
+                result += adt_card_632xe.adt_set_axis_io_map(_cardNo, axis, 2, board, 2);
+                result += adt_card_632xe.adt_set_hardlimit_mode(_cardNo, axis, 2, 1, logic, 0);
+                //设置脉冲当量编程模式
+                result += adt_card_632xe.adt_set_unit_mode(_cardNo, axis, 0);
+                result += adt_card_632xe.adt_set_pulse_equiv(_cardNo, axis, 1000);
+                //
+            }
         }
 
         protected override bool DoGetAxisEnable(AxisType axisType)

@@ -9,8 +9,8 @@ namespace Company.Hardware.ControlCard
     /// </summary>
     public struct ControlCardBit
     {
-        public int Board { get; }//一般指板卡号
-        public int Port { get; }//一般指端口号
+        public int Board { get; }//一般指板卡号 0-16 0表示伺服本身IO
+        public int Port { get; }//一般指端口号 0-15
         public ControlCardBit(int board,int port)
         {
             Board = board;
@@ -23,7 +23,7 @@ namespace Company.Hardware.ControlCard
         }
         public static implicit operator int(ControlCardBit bit)
         {
-            return bit.Board;
+            return bit.Port;
         }
     }
 }
