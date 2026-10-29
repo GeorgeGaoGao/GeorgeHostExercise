@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -15,6 +16,7 @@ namespace Company.Hardware.ControlCard
         public SpeedMode SpeedMode { get; private set; }
         public ControlCardConfig ControlCardConfig { get; set; }
 
+        protected IEnumerable<AxisType> AxisTypes { get; private set; } = Enum.GetValues<AxisType>().Cast<AxisType>();
         public void Close()
         {
             if (IsInitialized)

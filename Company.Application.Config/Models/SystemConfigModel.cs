@@ -1,5 +1,6 @@
 ﻿using Company.Application.Share.Config;
 using Company.Hardware.Camera;
+using Company.Hardware.ControlCard;
 using Company.Hardware.Detector;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace Company.Application.Config.Models
         public SoftwareConfig SoftwareConfig { get; set; } = new SoftwareConfig();
         public CameraConfig CameraConfig { get; set; } = new CameraConfig();
         public DetectorConfig DetectorConfig { get; set; } = new DetectorConfig();
+        public ControlCardConfig ControlCardConfig { get; set; } = new ControlCardConfig();
     }
 }
