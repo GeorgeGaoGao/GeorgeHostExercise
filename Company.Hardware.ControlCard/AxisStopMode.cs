@@ -9,7 +9,7 @@ namespace Company.Hardware.ControlCard
     /// </summary>
     public enum AxisStopMode
     {
-        减速停止,
-        立即停止,
+        减速停止=0,
+        立即停止=1,
     }
 }

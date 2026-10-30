@@ -1,4 +1,5 @@
 ﻿using ADT_CARD_632XE;
+using Company.Core.Dialog.Views;
 using Company.Logger;
 using DEMO632XE;
 using System;
@@ -18,10 +19,7 @@ namespace Company.Hardware.ControlCard.AdTech
             throw new NotImplementedException();
         }
 
-        protected override void DoClose()
-        {
-            throw new NotImplementedException();
-        }
+       
         /// <summary>
         /// 配置控制卡
         /// </summary>
@@ -65,16 +63,41 @@ namespace Company.Hardware.ControlCard.AdTech
                 result += adt_card_632xe.adt_set_pulse_equiv(_cardNo, axis, 1000);
                 //
             }
+            //创建插补坐标系
+            result += adt_card_632xe.adt_set_inp_coordinate(_cardNo, 63, 3, new int[] { 3, 4 });
+            //设置脉冲当量编程模式
+            result += adt_card_632xe.adt_set_unit_mode(_cardNo, 63, 0);
+            //软限位
+            int enable = 1;//启用软限位
+            foreach (var item in AxisTypes)
+            {
+                int axis = (int)item;
+                double ppos = 0;
+                double npos = 0;
+                result += adt_card_632xe.adt_set_softlimit_mode(_cardNo, axis, enable, ppos, npos, (int)AxisStopMode.减速停止);
+            }
+            if (result!=0)
+            {
+                Logs.LogError("adt_card_632xe 控制卡配置异常。");
+            }
         }
 
         protected override bool DoGetAxisEnable(AxisType axisType)
         {
-            throw new NotImplementedException();
+            int axis = (int)axisType;
+            adt_card_632xe.adt_get_axis_enable(_cardNo,axis,out int enable);//获取轴的使能状态。
+            return enable == 1;//1表示使能成功 0表示断使能
         }
 
         protected override bool DoGetAxisStopped(AxisType axisType)
         {
-            throw new NotImplementedException();
+            int axis = (int)axisType;
+            int result=adt_card_632xe.adt_get_stopdata(_cardNo,axis,out int stopdata);//获取轴的停止信息
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡{axis}轴停止信息获取失败。");
+               
+            }
         }
 
         protected override bool DoInitial()
@@ -141,9 +164,29 @@ namespace Company.Hardware.ControlCard.AdTech
             throw new NotImplementedException();
         }
 
-        protected override void DoStop(AxisType? axisType, AxisStopMode 减速停止)
+        protected override void DoStop(AxisType? axisType, AxisStopMode stopMode)
         {
-            throw new NotImplementedException();
+            int axis = axisType.HasValue ? (int)axisType.Value : 0;
+            int result=adt_card_632xe.adt_set_axis_stop(_cardNo, axis,(int)stopMode);
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡{axis}轴停止失败：{adt_global.adt_decode_error_code(result)}");
+                PopupBox.ShowPopupBox($"adt_card_632xe 控制卡{axis}轴停止失败：{adt_global.adt_decode_error_code(result)}",1);
+            }
+        }
+        protected override void DoClose()
+        {
+            int result = adt_card_632xe.adt_ecat_stop(_cardNo);//终止总线通信
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡停止失败:{adt_global.adt_decode_error_code(result)}");
+                PopupBox.ShowPopupBox($"adt_card_632xe 控制卡停止失败:{adt_global.adt_decode_error_code(result)}", 1);
+            }
+            result = adt_card_632xe.adt_close_card();//控制卡资源释放
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡关闭失败:{adt_global.adt_decode_error_code(result)}");
+            }
         }
     }
 }
