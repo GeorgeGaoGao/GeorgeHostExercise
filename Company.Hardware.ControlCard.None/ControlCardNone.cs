@@ -9,14 +9,13 @@ namespace Company.Hardware.ControlCard.None
 {
     public class ControlCardNone : ControlCardBase
     {
-        private bool _isAxisHomed;
 
-        public override bool IsAxisHomed => _isAxisHomed;
+        public override bool IsAxisHomed { get; set; }
 
         public override bool GoHome(out string message)
         {
             message = "回零成功";
-            _isAxisHomed = true;
+            IsAxisHomed = true;
             return true;
         }
 
@@ -31,6 +30,10 @@ namespace Company.Hardware.ControlCard.None
         }
 
         protected override bool DoGetAxisEnable(AxisType axisType)
+        {
+            return true;
+        } 
+        protected override bool DoSetAxisEnable(AxisType axisType, bool value)
         {
             return true;
         }
@@ -54,6 +57,11 @@ namespace Company.Hardware.ControlCard.None
             Thread.Sleep((int)distance * 1);//1微米 1毫秒 用耗时模拟操作
             return true;
         }
+        protected override bool DoMoveContinue(AxisType axisType, MoveDirection moveDirection)
+        {
+            return true;
+        }
+
 
         protected override void DoStop(AxisType? axisType, AxisStopMode 减速停止)
         {
@@ -74,5 +82,7 @@ namespace Company.Hardware.ControlCard.None
         {
             Thread.Sleep(500);//耗时模拟
         }
+
+       
     }
 }

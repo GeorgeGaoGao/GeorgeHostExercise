@@ -2,6 +2,7 @@
 using Company.Core.Dialog.Views;
 using Company.Logger;
 using DEMO632XE;
+using ReactiveUI.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,11 +13,24 @@ namespace Company.Hardware.ControlCard.AdTech
     {
         private int _cardNo;//控制卡卡号
         private readonly ControlCardBit 急停=new ControlCardBit(2,1);
-        public override bool IsAxisHomed => throw new NotImplementedException();
+        public override bool IsAxisHomed{ get; set; }
 
         public override bool GoHome(out string message)
         {
-            throw new NotImplementedException();
+           IsAxisHomed = false;
+            message = string.Empty;
+            int result = 0;
+            foreach (var item in AxisTypes)
+            {
+                int axis = (int)item;
+                result+=adt_card_632xe.adt_set_home_process(_cardNo,axis);
+            }
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡回零失败。");
+
+            }
+            return result == 0;
         }
 
        
@@ -88,16 +102,39 @@ namespace Company.Hardware.ControlCard.AdTech
             adt_card_632xe.adt_get_axis_enable(_cardNo,axis,out int enable);//获取轴的使能状态。
             return enable == 1;//1表示使能成功 0表示断使能
         }
+        /// <summary>
+        /// 
+        /// //功  能：  控制输出, 使能伺服电机 
+        //参  数：  cardno      --  可用控制卡卡号
+        //          axis        --  轴号, [0,32][60,63], 实体轴上限以当前系统实际连接总线伺服数为准, 轴号为0时为所有轴总倍率, 包括插补轴
+        //          enable      --  使能标识, [0,1], 0:关闭使能, 1:使能
+        //备  注：  1. 对于脉冲轴, 如果需要使用输出控制伺服电机上使能
+        /// </summary>
+        /// <param name="axisType"></param>
+        /// <returns></returns>
+        protected override bool DoSetAxisEnable(AxisType axisType,bool value)
+        {
+            int axis = (int)axisType;
+            int enable = value ? 1 : 0;
+            int result=adt_card_632xe.adt_set_axis_enable(_cardNo, axis,enable);//设置轴的便能状态。
+            if (result!=0)
+            {
+                Logs.LogError($"adt_card_632xe 控制卡设置轴使能异常。");
+                return false;
+            }
+            return true;
+        }
 
         protected override bool DoGetAxisStopped(AxisType axisType)
         {
-            int axis = (int)axisType;
-            int result=adt_card_632xe.adt_get_stopdata(_cardNo,axis,out int stopdata);//获取轴的停止信息
-            if (result!=0)
-            {
-                Logs.LogError($"adt_card_632xe 控制卡{axis}轴停止信息获取失败。");
+            //int axis = (int)axisType;
+            //int result=adt_card_632xe.adt_get_stopdata(_cardNo,axis,out int stopdata);//获取轴的停止信息
+            //if (result!=0)
+            //{
+            //    Logs.LogError($"adt_card_632xe 控制卡{axis}轴停止信息获取失败。");
                
-            }
+            //}
+            throw new NotImplementedException();
         }
 
         protected override bool DoInitial()
@@ -161,7 +198,15 @@ namespace Company.Hardware.ControlCard.AdTech
 
         protected override bool DoMoveAxis(AxisType axisType, double distance)
         {
-            throw new NotImplementedException();
+            int axis = (int)axisType;
+            int result = adt_card_632xe.adt_pmove_unit(_cardNo, axis, distance, 0);
+            return result == 0;
+        }
+        protected override bool DoMoveContinue(AxisType axisType, MoveDirection moveDirection)
+        {
+            int axis = (int)axisType;
+            int result = adt_card_632xe.adt_continue_move(_cardNo, axis, (int)moveDirection);
+            return result == 0;
         }
 
         protected override void DoStop(AxisType? axisType, AxisStopMode stopMode)
@@ -188,5 +233,7 @@ namespace Company.Hardware.ControlCard.AdTech
                 Logs.LogError($"adt_card_632xe 控制卡关闭失败:{adt_global.adt_decode_error_code(result)}");
             }
         }
+
+        
     }
 }

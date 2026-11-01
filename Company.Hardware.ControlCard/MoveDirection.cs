@@ -9,8 +9,8 @@ namespace Company.Hardware.ControlCard
     /// </summary>
     public enum MoveDirection
     {
-        positive,
-        negative,
+        positive=0,
+        negative=1,
 
     }
 }

@@ -12,7 +12,7 @@ namespace Company.Hardware.ControlCard
 
         public bool IsReady => IsInitialized && IsInitialized;
 
-        public abstract bool IsAxisHomed { get; }
+        public abstract bool IsAxisHomed { get; set; }
         public SpeedMode SpeedMode { get; private set; }
         public ControlCardConfig ControlCardConfig { get; set; }
 
@@ -112,8 +112,11 @@ namespace Company.Hardware.ControlCard
         protected abstract void DoStop(AxisType? axisType, AxisStopMode 减速停止);
         public abstract bool GoHome(out string message);
         protected abstract bool DoMoveAxis(AxisType axisType, double distance);
+        protected abstract bool DoMoveContinue(AxisType axisType, MoveDirection moveDirection);
+        
         protected abstract bool DoGetAxisStopped(AxisType axisType);
         protected abstract bool DoGetAxisEnable(AxisType axisType);
+        protected abstract bool DoSetAxisEnable(AxisType axisType,bool value);
 
 
     }
