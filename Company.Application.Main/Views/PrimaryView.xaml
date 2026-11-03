@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Company.Application.Main.Views.PrimaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" 
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:share="clr-namespace:Company.Application.Share.Prism;assembly=Company.Application.Share"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <TabControl Margin="5 0 5 0" controls:HeaderedControlHelper.HeaderFontSize="16" >
+        <TabItem Header="图像处理" >
+            <ContentControl prism:RegionManager.RegionName="{x:Static share:RegionNames.ProcessPicRegion }"/>
+        </TabItem>
+        <TabItem Header="绘图标记" prism:RegionManager.RegionName="{x:Static share:RegionNames.DrawToolRegion}">
+            
+        </TabItem>
+    </TabControl>
+</UserControl>

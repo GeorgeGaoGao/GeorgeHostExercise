@@ -14,6 +14,7 @@ namespace Company.Application.Main
         public void OnInitialized(IContainerProvider containerProvider)
         {
             containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<MainView>(RegionNames.MainRegion);
+        containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<PrimaryView>(RegionNames.PrimaryRegion);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
