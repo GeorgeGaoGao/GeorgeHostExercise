@@ -17,7 +17,7 @@
         <Grid Grid.Column="0">
             <ContentControl prism:RegionManager.RegionName="{x:Static share:RegionNames.ImageRegion}"/>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/><!--menu-->
                 <RowDefinition Height="auto"/><!--快捷按钮-->
@@ -27,6 +27,13 @@
             </Grid.RowDefinitions>
             <ContentControl Grid.Row="0" prism:RegionManager.RegionName="{x:Static share:RegionNames.MenuRegion}"/>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Content="&#xf115;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf0c7;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf044;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf293;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf240;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf030;" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="&#xf03e;" Style="{StaticResource IconButtonStyle}"/>
                 
             </StackPanel>
             <ContentControl Grid.Row="2" prism:RegionManager.RegionName="{x:Static share:RegionNames.PrimaryRegion}" />

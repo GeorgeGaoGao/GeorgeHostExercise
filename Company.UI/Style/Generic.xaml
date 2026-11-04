@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Company.UI;component/Style/MahApps.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Company.UI;component/Style/MyButton.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Company.UI;component/Style/MahApps.xaml"/>
+        
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

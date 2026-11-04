@@ -10,5 +10,7 @@ namespace Company.Application.Share.Prism
         public  const string MainView = "MainView";//主视图
         public  const string InitializeView = "InitializeView";//初始化视图
         public const string ConfigView = "ConfigView";//系统配置视图
+
+        //public const string PrimaryView = "PrimaryView";//右侧视图中 主要的，有标题栏的部分
     }
 }

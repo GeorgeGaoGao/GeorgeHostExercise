@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Company.Application.Main
 {
-    [Module(ModuleName = ModuleNames.ApplicationMainModule,OnDemand =true)]
+    [Module(ModuleName = ModuleNames.ApplicationMainModule, OnDemand = true)]
     [ModuleDependency(ModuleNames.ApplicationMenuModule)]
     [ModuleDependency(ModuleNames.ApplicationImageModule)]
     public class ApplicationMainModule : IModule
@@ -14,7 +14,7 @@ namespace Company.Application.Main
         public void OnInitialized(IContainerProvider containerProvider)
         {
             containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<MainView>(RegionNames.MainRegion);
-        containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<PrimaryView>(RegionNames.PrimaryRegion);
+            containerProvider.Resolve<IRegionManager>().RegisterViewWithRegion<PrimaryView>(RegionNames.PrimaryRegion);
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
