@@ -40,7 +40,7 @@ namespace Company.Core.Model
             Write(buffer.Header, buffer.Width, buffer.Height);
         }
 
-        private void Write(nint header, int width, int height)
+        public void Write(nint header, int width, int height)
         {
             UnmanagedArray2D<T> target = null;
             BufferType targetType = BufferType.Buffer1;

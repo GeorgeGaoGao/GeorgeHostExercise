@@ -1,6 +1,7 @@
 ﻿using Company.Application.Share.Interface;
 using Company.Core.IOC;
 using Company.Core.Model;
+using Company.Hardware.Camera;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,10 @@ namespace Company.Application.Process.Models
         public CameraProcessModel()
         {
             ImageObserver = this.WhenAnyValue(p => p.Buffer.CurrentBuffer);
+        }
+        public void Write(Photo photo)
+        {
+            Buffer.Write(photo.Header, photo.Width, photo.Height);
         }
     }
 }

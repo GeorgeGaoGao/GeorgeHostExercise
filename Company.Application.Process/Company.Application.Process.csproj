@@ -14,9 +14,6 @@
     <ProjectReference Include="..\Company.Logger\Company.Logger.csproj" />
     <ProjectReference Include="..\Company.UI\Company.UI.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)Shell\bin\$(Configuration)\$(TargetFramework)\Modules\&quot; /Y" />
   </Target>
