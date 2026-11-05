@@ -34,7 +34,9 @@
                 <Button Content="&#xf240;" Style="{StaticResource IconButtonStyle}"/>
                 <Button Content="&#xf030;" Style="{StaticResource IconButtonStyle}"/>
                 <Button Content="&#xf03e;" Style="{StaticResource IconButtonStyle}"/>
-                
+                <CheckBox Name="mouseWorkMode" Content="&#xf0b2;" Style="{StaticResource IconCheckBoxStyle}"/>
+                <ComboBox Name="combobox" Height="25" MinWidth="70" IsEnabled="{Binding ElementName=mouseWorkMode,Path=IsChecked}"/>
+
             </StackPanel>
             <ContentControl Grid.Row="2" prism:RegionManager.RegionName="{x:Static share:RegionNames.PrimaryRegion}" />
             <ContentControl Grid.Row="3" prism:RegionManager.RegionName="{x:Static share:RegionNames.AxisRegion}" />

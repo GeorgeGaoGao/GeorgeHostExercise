@@ -8,7 +8,8 @@ namespace Company.Application.Main
 {
     [Module(ModuleName = ModuleNames.ApplicationMainModule, OnDemand = true)]
     [ModuleDependency(ModuleNames.ApplicationMenuModule)]
-    [ModuleDependency(ModuleNames.ApplicationImageModule)]
+    [ModuleDependency(ModuleNames.ApplicationImageModule)]//图像展示
+    [ModuleDependency(ModuleNames.ApplicationProcessModule)]//图像处理,由下向上
     public class ApplicationMainModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

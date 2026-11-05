@@ -15,5 +15,6 @@ namespace Company.Application.Share.Prism
         public const string ApplicationImageModule = "ApplicationImageModule";
         public const string ApplicationInitializeModule = "ApplicationInitializeModule";
         public const string ApplicationConfigModule = "ApplicationConfigModule";
+        public const string ApplicationProcessModule = "ApplicationProcessModule";
     }
 }
